@@ -1,0 +1,151 @@
+@@include('components/page-header.html', { "title": "Blog" })
+
+<!-- Blog -->
+<section class="section">
+  <div class="container">
+    <div class="row gx-5">
+      <!-- blog posts -->
+      <div class="lg:col-8">
+        <div class="row">
+          <div class="mb-14 md:col-6">
+            @@include("components/blog-card.html")
+          </div>
+          <div class="mb-14 md:col-6">
+            @@include("components/blog-card.html")
+          </div>
+          <div class="mb-14 md:col-6">
+            @@include("components/blog-card.html")
+          </div>
+          <div class="mb-14 md:col-6">
+            @@include("components/blog-card.html")
+          </div>
+          <div class="mb-14 md:col-6">
+            @@include("components/blog-card.html")
+          </div>
+          <div class="mb-14 md:col-6">
+            @@include("components/blog-card.html")
+          </div>
+        </div>
+        @@include('components/pagination.html')
+      </div>
+      <!-- sidebar -->
+      <div class="lg:col-4">
+        <!-- categories -->
+        <div class="mb-8">
+          <h5 class="mb-6">Categories</h5>
+          <div class="rounded bg-theme-light p-8 dark:bg-darkmode-theme-light">
+            <ul class="space-y-4">
+              <li>
+                <a
+                  class="flex justify-between hover:text-primary dark:hover:text-darkmode-primary"
+                  href="category-single.html"
+                >
+                  Application <span>( 03 )</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  class="flex justify-between hover:text-primary dark:hover:text-darkmode-primary"
+                  href="category-single.html"
+                >
+                  Technology <span>( 03 )</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  class="flex justify-between hover:text-primary dark:hover:text-darkmode-primary"
+                  href="category-single.html"
+                >
+                  Software <span>( 03 )</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  class="flex justify-between hover:text-primary dark:hover:text-darkmode-primary"
+                  href="category-single.html"
+                >
+                  Business <span>( 03 )</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- tags -->
+        <div class="mb-8">
+          <h5 class="mb-6">Tags</h5>
+          <div class="rounded bg-theme-light p-6 dark:bg-darkmode-theme-light">
+            <ul>
+              <li class="inline-block">
+                <a
+                  class="m-1 block rounded bg-white px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-body dark:hover:bg-darkmode-primary dark:hover:text-dark"
+                  href="category-single.html"
+                >
+                  nextjs
+                </a>
+              </li>
+              <li class="inline-block">
+                <a
+                  class="m-1 block rounded bg-white px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-body dark:hover:bg-darkmode-primary dark:hover:text-dark"
+                  href="category-single.html"
+                >
+                  webdev
+                </a>
+              </li>
+              <li class="inline-block">
+                <a
+                  class="m-1 block rounded bg-white px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-body dark:hover:bg-darkmode-primary dark:hover:text-dark"
+                  href="category-single.html"
+                >
+                  webdev
+                </a>
+              </li>
+              <li class="inline-block">
+                <a
+                  class="m-1 block rounded bg-white px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-body dark:hover:bg-darkmode-primary dark:hover:text-dark"
+                  href="category-single.html"
+                >
+                  javascript
+                </a>
+              </li>
+              <li class="inline-block">
+                <a
+                  class="m-1 block rounded bg-white px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-body dark:hover:bg-darkmode-primary dark:hover:text-dark"
+                  href="category-single.html"
+                >
+                  opensource
+                </a>
+              </li>
+              <li class="inline-block">
+                <a
+                  class="m-1 block rounded bg-white px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-body dark:hover:bg-darkmode-primary dark:hover:text-dark"
+                  href="category-single.html"
+                >
+                  angular
+                </a>
+              </li>
+              <li class="inline-block">
+                <a
+                  class="m-1 block rounded bg-white px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-body dark:hover:bg-darkmode-primary dark:hover:text-dark"
+                  href="category-single.html"
+                >
+                  html
+                </a>
+              </li>
+              <li class="inline-block">
+                <a
+                  class="m-1 block rounded bg-white px-3 py-1 hover:bg-primary hover:text-white dark:bg-darkmode-body dark:hover:bg-darkmode-primary dark:hover:text-dark"
+                  href="category-single.html"
+                >
+                  hugo
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Blog -->
+
+@@include('call-to-action.html')

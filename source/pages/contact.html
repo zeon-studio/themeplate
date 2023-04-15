@@ -1,0 +1,46 @@
+@@include('components/page-header.html', { "title": "Contact" })
+
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto md:col-10 lg:col-6">
+        <form action="#" method="POST">
+          <div class="mb-6">
+            <label for="name" class="form-label">
+              Full Name <span class="text-red-500">*</span>
+            </label>
+            <input
+              id="name"
+              class="form-input"
+              placeholder="John Doe"
+              type="text"
+            />
+          </div>
+          <div class="mb-6">
+            <label for="mail" class="form-label">
+              Working Mail <span class="text-red-500">*</span>
+            </label>
+            <input
+              id="mail"
+              class="form-input"
+              placeholder="john.doe@email.com"
+              type="email"
+            />
+          </div>
+          <div class="mb-6">
+            <label for="message" class="form-label">
+              Anything else? <span class="text-red-500">*</span>
+            </label>
+            <textarea
+              class="form-input"
+              placeholder="Message goes here..."
+              id="message"
+              rows="8"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
