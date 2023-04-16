@@ -53,22 +53,22 @@
     }
   }
 
-  &.success {
+  &.note {
+    @apply text-[#1B83E2];
+    @apply border-current;
+  }
+
+  &.tip {
     @apply text-[#40D294];
     @apply border-current;
   }
 
   &.info {
-    @apply text-[#1B83E2];
-    @apply border-current;
-  }
-
-  &.warning {
     @apply text-[#E3A72C];
     @apply border-current;
   }
 
-  &.error {
+  &.warning {
     @apply text-[#DB2C23];
     @apply border-current;
   }
