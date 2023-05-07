@@ -12,7 +12,7 @@ const rimraf = require("rimraf");
 const wrapper = require("gulp-wrapper");
 const comments = require("gulp-header-comment");
 const template = require("gulp-template");
-const theme = require("./source/theme.json");
+const theme = require("./src/theme.json");
 const node_env = process.argv.slice(2)[0];
 const headerComments = `WEBSITE: https://themefisher.com
                         TWITTER: https://twitter.com/themefisher
@@ -22,12 +22,12 @@ const headerComments = `WEBSITE: https://themefisher.com
 var path = {
   // source paths
   src: {
-    pages: "source/pages/*.html",
-    partials: "source/partials/**/*.html",
-    styles: "source/styles/*.scss",
-    scripts: "source/scripts/*.js",
-    plugins: "source/plugins/**/*",
-    public: "source/public/**/*",
+    pages: "src/pages/*.html",
+    partials: "src/partials/**/*.html",
+    styles: "src/styles/*.scss",
+    scripts: "src/scripts/*.js",
+    plugins: "src/plugins/**/*",
+    public: "src/public/**/*",
   },
 
   // build paths
@@ -52,7 +52,7 @@ gulp.task("pages", function () {
     )
     .pipe(
       fileinclude({
-        basepath: "source/partials/",
+        basepath: "src/partials/",
       })
     )
     .pipe(

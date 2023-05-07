@@ -1,4 +1,4 @@
-const theme = require("./source/theme.json");
+const theme = require("./src/theme.json");
 
 let font_base = Number(theme.fonts.font_size.base.replace("px", ""));
 let font_scale = Number(theme.fonts.font_size.scale);
@@ -25,9 +25,9 @@ if (theme.fonts.font_family.secondary) {
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./source/pages/**/*.html",
-    "./source/partials/**/*.html",
-    "./source/scripts/**/*.js",
+    "./src/pages/**/*.html",
+    "./src/partials/**/*.html",
+    "./src/scripts/**/*.js",
   ],
   safelist: [{ pattern: /^swiper-/ }],
   darkMode: "class",

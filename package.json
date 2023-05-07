@@ -1,6 +1,6 @@
 {
   "name": "gulpplate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Gulp and Tailwindcss boilerplate for creating HTML templates",
   "author": "Zeon Studio",
   "license": "MIT",
@@ -27,11 +27,11 @@
     "gulp-wrapper": "^1.0.0",
     "jshint": "^2.13.6",
     "jshint-stylish": "^2.2.1",
-    "postcss": "^8.4.21",
-    "prettier": "^2.8.7",
-    "prettier-plugin-tailwindcss": "^0.2.7",
-    "sass": "^1.61.0",
+    "postcss": "^8.4.23",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.2.8",
+    "sass": "^1.62.1",
     "tailwind-bootstrap-grid": "^5.0.1",
-    "tailwindcss": "^3.3.1"
+    "tailwindcss": "^3.3.2"
   }
 }

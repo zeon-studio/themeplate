@@ -46,7 +46,7 @@
       @apply font-secondary text-xl font-semibold text-dark dark:text-darkmode-light;
     }
   }
-  .notice-body {
+  &-body {
     @apply mt-3;
     p {
       @apply my-0;
