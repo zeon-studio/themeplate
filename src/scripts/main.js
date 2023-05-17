@@ -95,7 +95,7 @@
     if (numbTabs > 1) {
       if (event.key === "ArrowRight") {
         nextId = tablist[(index + 1) % numbTabs];
-        if (index == numbTabs - 1) {
+        if (index === numbTabs - 1) {
           nextId = tablist[0];
         }
         nextId.focus();
@@ -103,7 +103,7 @@
       }
       if (event.key === "ArrowLeft") {
         nextId = tablist[(index - 1 + numbTabs) % numbTabs];
-        if (index == 0) {
+        if (index === 0) {
           nextId = tablist[numbTabs - 1];
         }
         nextId.focus();
@@ -115,10 +115,6 @@
   tablist.forEach(function (tab) {
     tab.addEventListener("keydown", tabsHandler);
   });
-
-  document
-    .querySelector("[role='tablist'] [role='tab'][aria-selected='true']")
-    .click();
 
   // ########################## Accordion ##########################
   const accordion = document.querySelectorAll("[data-accordion]");
