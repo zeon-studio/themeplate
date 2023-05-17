@@ -75,9 +75,7 @@
   tabGroups.forEach((tabGroup) => {
     const tabsNav = tabGroup.querySelector("[data-tab-nav]");
     const tabsNavItem = tabsNav.querySelectorAll("[data-tab]");
-    const activeTabName =
-      localStorage.getItem(`activeTabName-${tabGroup.dataset.tabGroup}`) ||
-      tabsNavItem[0].getAttribute("data-tab");
+    const activeTabName = tabsNavItem[0].getAttribute("data-tab");
 
     setActiveTab(tabGroup, activeTabName);
 
@@ -85,13 +83,42 @@
       tabNavItem.addEventListener("click", () => {
         const tabName = tabNavItem.dataset.tab;
         setActiveTab(tabGroup, tabName);
-        localStorage.setItem(
-          `activeTabName-${tabGroup.dataset.tabGroup}`,
-          tabName
-        );
       });
     });
   });
+
+  const tablist = document.querySelectorAll("[data-tab-nav] [data-tab]");
+  function tabsHandler(event) {
+    let index = Array.from(tablist).indexOf(this);
+    let numbTabs = tablist.length;
+    let nextId;
+    if (numbTabs > 1) {
+      if (event.key === "ArrowRight") {
+        nextId = tablist[(index + 1) % numbTabs];
+        if (index == numbTabs - 1) {
+          nextId = tablist[0];
+        }
+        nextId.focus();
+        nextId.click();
+      }
+      if (event.key === "ArrowLeft") {
+        nextId = tablist[(index - 1 + numbTabs) % numbTabs];
+        if (index == 0) {
+          nextId = tablist[numbTabs - 1];
+        }
+        nextId.focus();
+        nextId.click();
+      }
+    }
+  }
+
+  tablist.forEach(function (tab) {
+    tab.addEventListener("keydown", tabsHandler);
+  });
+
+  document
+    .querySelector("[role='tablist'] [role='tab'][aria-selected='true']")
+    .click();
 
   // ########################## Accordion ##########################
   const accordion = document.querySelectorAll("[data-accordion]");
