@@ -22,6 +22,7 @@ const headerComments = `WEBSITE: https://themefisher.com
 var path = {
   // source paths
   src: {
+    theme: "src/theme.json",
     pages: "src/pages/*.html",
     partials: "src/partials/**/*.html",
     styles: "src/styles/*.scss",
@@ -131,6 +132,7 @@ gulp.task("clean", function (cb) {
 
 // Watch Task
 gulp.task("watch", function () {
+  gulp.watch(path.src.theme, gulp.parallel("styles"));
   gulp.watch(path.src.pages, gulp.parallel("pages", "styles"));
   gulp.watch(path.src.partials, gulp.parallel("pages", "styles"));
   gulp.watch(path.src.scripts, gulp.parallel("scripts", "styles"));
