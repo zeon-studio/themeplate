@@ -1,12 +1,11 @@
-<h1 align=center>HTML Starter Template Built With Gulp & Tailwind CSS </h1>
+<h1 align="center">HTML Starter Template Built With Gulp & Tailwind CSS </h1>
 
-<p align=center>Themeplate is a free HTML Starter Template built with Gulp and TailwindCSS, providing everything you need to jumpstart your Gulp project and save valuable time.
+<p align="center">Themeplate is a free HTML Starter Template built with Gulp and TailwindCSS, providing everything you need to jumpstart your Gulp project and save valuable time.</p>
 
-</p>
+<p align="center">Made with ♥ by <a href="https://zeon.studio/">Zeon Studio</a></p>
 
-<p align=center> Made with ♥ by <a href="https://zeon.studio/">Zeon Studio</a></p>
-
-<h2 align="center"> <a target="_blank" href="https://themeplate.netlify.app/" rel="nofollow">👀 Demo</a> | <a  target="_blank" href="https://pagespeed.web.dev/analysis/https-themeplate-netlify-app/1to2abs0qz?form_factor=desktop">Page Speed (95+)🚀</a>
+<h2 align="center">
+<a target="_blank" href="https://themeplate.netlify.app/" rel="nofollow">👀 Demo</a> | <a  target="_blank" href="https://pagespeed.web.dev/analysis/https-themeplate-netlify-app/1to2abs0qz?form_factor=desktop">Page Speed (95+)🚀</a>
 </h2>
 
 ## 🚀 Getting Started
