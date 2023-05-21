@@ -1,6 +1,6 @@
 {
   "name": "themeplate",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Gulp and Tailwindcss boilerplate for creating HTML templates",
   "author": "Zeon Studio",
   "license": "MIT",
@@ -8,7 +8,7 @@
     "dev": "gulp dev",
     "build": "gulp build",
     "deploy": "gulp deploy",
-    "format": "prettier -w ."
+    "format": "prettier -w ./src"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
