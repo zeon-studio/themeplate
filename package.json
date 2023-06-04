@@ -9,7 +9,7 @@
     "build": "gulp build",
     "deploy": "gulp deploy",
     "format": "prettier -w ./src",
-    "remove-darkmode": "node scripts/removeDarkMode.js && yarn format"
+    "remove-darkmode": "node scripts/removeDarkmode.js && yarn format"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
