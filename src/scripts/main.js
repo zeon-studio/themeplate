@@ -27,7 +27,9 @@
         document.documentElement.classList.toggle("dark");
         localStorage.setItem(
           "theme",
-          document.documentElement.classList.contains("dark") ? "dark" : "light"
+          document.documentElement.classList.contains("dark")
+            ? "dark"
+            : "light",
         );
       });
     });
@@ -67,7 +69,7 @@
     const selectedTabNavItem = tabsNav.querySelector(`[data-tab="${tabName}"]`);
     selectedTabNavItem.classList.add("active");
     const selectedTabPane = tabsContent.querySelector(
-      `[data-tab-panel="${tabName}"]`
+      `[data-tab-panel="${tabName}"]`,
     );
     selectedTabPane.classList.add("active");
   }
