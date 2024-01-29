@@ -1,25 +1,29 @@
 "use strict";
 
-const sass = require("gulp-sass")(require("sass"));
-const gulp = require("gulp");
-const postcss = require("gulp-postcss");
-const tailwindcss = require("tailwindcss");
-const gutil = require("gulp-util");
-const jshint = require("gulp-jshint");
-const fileinclude = require("gulp-file-include");
-const bs = require("browser-sync").create();
-const rimraf = require("rimraf");
-const wrapper = require("gulp-wrapper");
-const comments = require("gulp-header-comment");
-const template = require("gulp-template");
-const theme = require("./src/theme.json");
+import autoprefixer from "autoprefixer";
+import bs from "browser-sync";
+import gulp from "gulp";
+import fileInclude from "gulp-file-include";
+import comments from "gulp-header-comment";
+import jshint from "gulp-jshint";
+import postcss from "gulp-postcss";
+import gulpSass from "gulp-sass";
+import template from "gulp-template";
+import gUtil from "gulp-util";
+import wrapper from "gulp-wrapper";
+import rimraf from "rimraf";
+import dartSass from "sass";
+import tailwindcss from "tailwindcss";
+import theme from "./src/theme.json" assert { type: "json" };
+
+const sass = gulpSass(dartSass);
 const node_env = process.argv.slice(2)[0];
 const headerComments = `WEBSITE: https://zeon.studio/
                         TWITTER: https://twitter.com/zeon_studio/
                         FACEBOOK: https://facebook.com/heyzeonstudio/
                         GITHUB: https://github.com/zeon-studio/`;
 
-var path = {
+const path = {
   // source paths
   src: {
     theme: "src/theme.json",
@@ -38,7 +42,7 @@ var path = {
 };
 
 // pages
-gulp.task("pages", function () {
+gulp.task("pages", () => {
   return gulp
     .src(path.src.pages)
     .pipe(
@@ -49,89 +53,87 @@ gulp.task("pages", function () {
           node_env === "dev"
             ? "@@include('components/tw-size-indicator.html')\n @@include('footer.html')\n</body>\n</html>"
             : "@@include('footer.html')\n</body>\n</html>",
-      })
+      }),
     )
     .pipe(
-      fileinclude({
+      fileInclude({
         basepath: "src/partials/",
-      })
+      }),
     )
     .pipe(
       template({
         fontPrimary: theme.fonts.font_family.primary,
         fontSecondary: theme.fonts.font_family.secondary,
-      })
+      }),
     )
     .pipe(comments(headerComments))
     .pipe(gulp.dest(path.build.dir))
     .pipe(
       bs.reload({
         stream: true,
-      })
+      }),
     );
 });
 
 // styles
-gulp.task("styles", function () {
+gulp.task("styles", () => {
   return gulp
     .src(path.src.styles)
     .pipe(
       sass({
         outputStyle: "expanded",
-      }).on("error", sass.logError)
+      }).on("error", sass.logError),
     )
-    .pipe(
-      postcss([tailwindcss("./tailwind.config.js"), require("autoprefixer")])
-    )
+    .pipe(postcss([tailwindcss("./tailwind.config.js"), autoprefixer()]))
     .pipe(comments(headerComments))
     .pipe(gulp.dest(path.build.dir + "styles/"))
     .pipe(
       bs.reload({
         stream: true,
-      })
+      }),
     );
 });
 
 // scripts
-gulp.task("scripts", function () {
+gulp.task("scripts", () => {
   return gulp
     .src(path.src.scripts)
     .pipe(jshint("./.jshintrc"))
     .pipe(jshint.reporter("jshint-stylish"))
-    .on("error", gutil.log)
+    .on("error", gUtil.log)
     .pipe(comments(headerComments))
     .pipe(gulp.dest(path.build.dir + "scripts/"))
     .pipe(
       bs.reload({
         stream: true,
-      })
+      }),
     );
 });
 
 // Plugins
-gulp.task("plugins", function () {
+gulp.task("plugins", () => {
   return gulp
     .src(path.src.plugins)
     .pipe(gulp.dest(path.build.dir + "plugins/"))
     .pipe(
       bs.reload({
         stream: true,
-      })
+      }),
     );
 });
 
 // public files
-gulp.task("public", function () {
+gulp.task("public", () => {
   return gulp.src(path.src.public).pipe(gulp.dest(path.build.dir));
 });
 
 // Clean Theme Folder
-gulp.task("clean", function (cb) {
+gulp.task("clean", (cb) => {
   rimraf("./theme", cb);
 });
 
 // Watch Task
-gulp.task("watch", function () {
+gulp.task("watch", () => {
   gulp.watch(path.src.theme, gulp.parallel("styles"));
   gulp.watch(path.src.pages, gulp.parallel("pages", "styles"));
   gulp.watch(path.src.partials, gulp.parallel("pages", "styles"));
@@ -151,24 +153,24 @@ gulp.task(
     "scripts",
     "plugins",
     "public",
-    gulp.parallel("watch", function () {
+    gulp.parallel("watch", () => {
       bs.init({
         server: {
           baseDir: path.build.dir,
         },
       });
-    })
-  )
+    }),
+  ),
 );
 
 // Build Task
 gulp.task(
   "build",
-  gulp.series("clean", "pages", "styles", "scripts", "plugins", "public")
+  gulp.series("clean", "pages", "styles", "scripts", "plugins", "public"),
 );
 
 // Deploy Task
 gulp.task(
   "deploy",
-  gulp.series("pages", "styles", "scripts", "plugins", "public")
+  gulp.series("pages", "styles", "scripts", "plugins", "public"),
 );
