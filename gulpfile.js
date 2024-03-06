@@ -12,7 +12,7 @@ import template from "gulp-template";
 import gUtil from "gulp-util";
 import wrapper from "gulp-wrapper";
 import rimraf from "rimraf";
-import dartSass from "sass";
+import * as dartSass from "sass";
 import tailwindcss from "tailwindcss";
 import theme from "./src/theme.json" assert { type: "json" };
 

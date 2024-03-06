@@ -1,6 +1,6 @@
 {
   "name": "themeplate",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Gulp and Tailwindcss boilerplate for creating HTML templates",
   "author": "Zeon Studio",
   "license": "MIT",
@@ -15,13 +15,13 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
-    "autoprefixer": "^10.4.17",
+    "autoprefixer": "^10.4.18",
     "browser-sync": "^3.0.2",
     "gulp": "^4.0.2",
     "gulp-file-include": "^2.3.0",
     "gulp-header-comment": "^0.10.0",
     "gulp-jshint": "^2.1.0",
-    "gulp-postcss": "^9.1.0",
+    "gulp-postcss": "^10.0.0",
     "gulp-rimraf": "^1.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-template": "^6.0.0",
@@ -29,10 +29,10 @@
     "gulp-wrapper": "^1.0.0",
     "jshint": "^2.13.6",
     "jshint-stylish": "^2.2.1",
-    "postcss": "^8.4.33",
-    "prettier": "^3.2.4",
+    "postcss": "^8.4.35",
+    "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "sass": "^1.70.0",
+    "sass": "^1.71.1",
     "tailwind-bootstrap-grid": "^5.1.0",
     "tailwindcss": "^3.4.1"
   }
