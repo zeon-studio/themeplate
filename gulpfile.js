@@ -124,7 +124,9 @@ gulp.task("plugins", () => {
 
 // public files
 gulp.task("public", () => {
-  return gulp.src(path.src.public).pipe(gulp.dest(path.build.dir));
+  return gulp
+    .src(path.src.public, { encoding: false })
+    .pipe(gulp.dest(path.build.dir));
 });
 
 // Clean Theme Folder
