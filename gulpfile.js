@@ -2,6 +2,7 @@
 
 import autoprefixer from "autoprefixer";
 import bs from "browser-sync";
+import { readFileSync } from "fs";
 import gulp from "gulp";
 import fileInclude from "gulp-file-include";
 import comments from "gulp-header-comment";
@@ -14,8 +15,8 @@ import wrapper from "gulp-wrapper";
 import rimraf from "rimraf";
 import * as dartSass from "sass";
 import tailwindcss from "tailwindcss";
-import theme from "./src/theme.json" assert { type: "json" };
 
+const theme = JSON.parse(readFileSync("./src/theme.json"));
 const sass = gulpSass(dartSass);
 const node_env = process.argv.slice(2)[0];
 const headerComments = `WEBSITE: https://zeon.studio/
