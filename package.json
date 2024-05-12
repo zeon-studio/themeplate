@@ -1,6 +1,6 @@
 {
   "name": "themeplate",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Gulp and Tailwindcss boilerplate for creating HTML templates",
   "author": "Zeon Studio",
   "license": "MIT",
