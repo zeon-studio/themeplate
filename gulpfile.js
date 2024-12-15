@@ -8,16 +8,15 @@ import fileInclude from "gulp-file-include";
 import comments from "gulp-header-comment";
 import jshint from "gulp-jshint";
 import postcss from "gulp-postcss";
-import gulpSass from "gulp-sass";
 import template from "gulp-template";
 import gUtil from "gulp-util";
 import wrapper from "gulp-wrapper";
 import rimraf from "rimraf";
 import * as dartSass from "sass";
 import tailwindcss from "tailwindcss";
+import through2 from "through2";
 
 const theme = JSON.parse(readFileSync("./src/theme.json"));
-const sass = gulpSass(dartSass);
 const node_env = process.argv.slice(2)[0];
 const headerComments = `WEBSITE: https://zeon.studio/
                         TWITTER: https://twitter.com/zeon_studio/
@@ -42,8 +41,41 @@ const path = {
   },
 };
 
+// Styles task using native Sass compilation
+function styles() {
+  return gulp
+    .src(path.src.styles)
+    .pipe(
+      through2.obj(function (file, enc, callback) {
+        if (file.isBuffer()) {
+          try {
+            const result = dartSass.compileString(file.contents.toString(), {
+              style: "expanded",
+              loadPaths: ["src/styles"],
+            });
+
+            file.contents = Buffer.from(result.css);
+            file.path = file.path.replace(".scss", ".css");
+          } catch (error) {
+            console.error("Sass compilation error:", error);
+          }
+        }
+        this.push(file);
+        callback();
+      }),
+    )
+    .pipe(postcss([tailwindcss("./tailwind.config.js"), autoprefixer]))
+    .pipe(comments(headerComments))
+    .pipe(gulp.dest(path.build.dir + "styles/"))
+    .pipe(
+      bs.reload({
+        stream: true,
+      }),
+    );
+}
+
 // pages
-gulp.task("pages", () => {
+function pages() {
   return gulp
     .src(path.src.pages)
     .pipe(
@@ -74,29 +106,10 @@ gulp.task("pages", () => {
         stream: true,
       }),
     );
-});
-
-// styles
-gulp.task("styles", () => {
-  return gulp
-    .src(path.src.styles)
-    .pipe(
-      sass({
-        outputStyle: "expanded",
-      }).on("error", sass.logError),
-    )
-    .pipe(postcss([tailwindcss("./tailwind.config.js"), autoprefixer()]))
-    .pipe(comments(headerComments))
-    .pipe(gulp.dest(path.build.dir + "styles/"))
-    .pipe(
-      bs.reload({
-        stream: true,
-      }),
-    );
-});
+}
 
 // scripts
-gulp.task("scripts", () => {
+function scripts() {
   return gulp
     .src(path.src.scripts)
     .pipe(jshint("./.jshintrc"))
@@ -109,10 +122,10 @@ gulp.task("scripts", () => {
         stream: true,
       }),
     );
-});
+}
 
 // Plugins
-gulp.task("plugins", () => {
+function plugins() {
   return gulp
     .src(path.src.plugins)
     .pipe(gulp.dest(path.build.dir + "plugins/"))
@@ -121,59 +134,65 @@ gulp.task("plugins", () => {
         stream: true,
       }),
     );
-});
+}
 
 // public files
-gulp.task("public", () => {
+function publicFiles() {
   return gulp
     .src(path.src.public, { encoding: false })
     .pipe(gulp.dest(path.build.dir));
-});
+}
 
 // Clean Theme Folder
-gulp.task("clean", (cb) => {
+function clean(cb) {
   rimraf("./theme", cb);
-});
+}
 
 // Watch Task
-gulp.task("watch", () => {
-  gulp.watch(path.src.theme, gulp.parallel("styles"));
-  gulp.watch(path.src.pages, gulp.parallel("pages", "styles"));
-  gulp.watch(path.src.partials, gulp.parallel("pages", "styles"));
-  gulp.watch(path.src.scripts, gulp.parallel("scripts", "styles"));
-  gulp.watch(path.src.styles, gulp.parallel("styles"));
-  gulp.watch(path.src.plugins, gulp.parallel("plugins", "pages"));
-  gulp.watch(path.src.public, gulp.parallel("public", "pages"));
-});
+function watch() {
+  gulp.watch(path.src.theme, gulp.parallel(styles));
+  gulp.watch(path.src.pages, gulp.parallel(pages, styles));
+  gulp.watch(path.src.partials, gulp.parallel(pages, styles));
+  gulp.watch(path.src.scripts, gulp.parallel(scripts, styles));
+  gulp.watch(path.src.styles, gulp.parallel(styles));
+  gulp.watch(path.src.plugins, gulp.parallel(plugins, pages));
+  gulp.watch(path.src.public, gulp.parallel(publicFiles, pages));
+}
 
 // dev Task
-gulp.task(
-  "dev",
-  gulp.series(
-    "clean",
-    "pages",
-    "styles",
-    "scripts",
-    "plugins",
-    "public",
-    gulp.parallel("watch", () => {
-      bs.init({
-        server: {
-          baseDir: path.build.dir,
-        },
-      });
-    }),
-  ),
+const dev = gulp.series(
+  clean,
+  pages,
+  styles,
+  scripts,
+  plugins,
+  publicFiles,
+  gulp.parallel(watch, () => {
+    bs.init({
+      server: {
+        baseDir: path.build.dir,
+      },
+    });
+  }),
 );
 
 // Build Task
-gulp.task(
-  "build",
-  gulp.series("clean", "pages", "styles", "scripts", "plugins", "public"),
-);
+const build = gulp.series(clean, pages, styles, scripts, plugins, publicFiles);
 
 // Deploy Task
-gulp.task(
-  "deploy",
-  gulp.series("pages", "styles", "scripts", "plugins", "public"),
-);
+const deploy = gulp.series(pages, styles, scripts, plugins, publicFiles);
+
+export {
+  build,
+  clean,
+  deploy,
+  dev,
+  pages,
+  plugins,
+  publicFiles,
+  scripts,
+  styles,
+  watch,
+};
+
+export default dev;
