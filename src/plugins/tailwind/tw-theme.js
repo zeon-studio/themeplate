@@ -8,7 +8,7 @@ import themeConfig from "../../theme.json";
     fontStr.replace(/\+/g, " ").replace(/:[^:]+/g, "");
 
   module.exports = plugin.withOptions(() => {
-    return ({ addBase, addUtilities, addComponents, theme }) => {
+    return ({ addBase, addUtilities }) => {
       const rootVars = {};
 
       const baseSize = Number(themeConfig.fonts.font_size.base);
