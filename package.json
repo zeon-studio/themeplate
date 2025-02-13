@@ -1,6 +1,6 @@
 {
   "name": "themeplate",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "description": "Gulp and Tailwindcss boilerplate for creating HTML templates",
   "author": "Zeon Studio",
   "license": "MIT",
@@ -13,10 +13,10 @@
     "remove-darkmode": "node scripts/removeDarkmode.mjs && yarn format"
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.7",
-    "@tailwindcss/typography": "^0.5.12",
-    "autoprefixer": "^10.4.19",
-    "browser-sync": "^3.0.2",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/postcss": "^4.0.6",
+    "@tailwindcss/typography": "^0.5.16",
+    "browser-sync": "^3.0.3",
     "gulp": "^5.0.0",
     "gulp-file-include": "^2.3.0",
     "gulp-header-comment": "^0.10.0",
@@ -28,11 +28,9 @@
     "gulp-wrapper": "^1.0.0",
     "jshint": "^2.13.6",
     "jshint-stylish": "^2.2.1",
-    "postcss": "^8.4.38",
-    "prettier": "^3.2.5",
-    "prettier-plugin-tailwindcss": "^0.5.13",
-    "sass": "^1.83.0",
-    "tailwind-bootstrap-grid": "^5.1.0",
-    "tailwindcss": "^3.4.3"
+    "postcss": "^8.5.2",
+    "prettier": "^3.5.0",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "tailwindcss": "^4.0.6"
   }
 }

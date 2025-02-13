@@ -1,6 +1,6 @@
 "use strict";
 
-import autoprefixer from "autoprefixer";
+import tailwindcss from "@tailwindcss/postcss";
 import bs from "browser-sync";
 import { readFileSync } from "fs";
 import gulp from "gulp";
@@ -12,9 +12,6 @@ import template from "gulp-template";
 import gUtil from "gulp-util";
 import wrapper from "gulp-wrapper";
 import rimraf from "rimraf";
-import * as dartSass from "sass";
-import tailwindcss from "tailwindcss";
-import through2 from "through2";
 
 const theme = JSON.parse(readFileSync("./src/theme.json"));
 const node_env = process.argv.slice(2)[0];
@@ -29,7 +26,8 @@ const path = {
     theme: "src/theme.json",
     pages: "src/pages/*.html",
     partials: "src/partials/**/*.html",
-    styles: "src/styles/*.scss",
+    styles: "src/styles/*.css",
+    mainStyle: "src/styles/main.css",
     scripts: "src/scripts/*.js",
     plugins: "src/plugins/**/*",
     public: "src/public/**/*",
@@ -44,34 +42,11 @@ const path = {
 // Styles task using native Sass compilation
 function styles() {
   return gulp
-    .src(path.src.styles)
-    .pipe(
-      through2.obj(function (file, enc, callback) {
-        if (file.isBuffer()) {
-          try {
-            const result = dartSass.compileString(file.contents.toString(), {
-              style: "expanded",
-              loadPaths: ["src/styles"],
-            });
-
-            file.contents = Buffer.from(result.css);
-            file.path = file.path.replace(".scss", ".css");
-          } catch (error) {
-            console.error("Sass compilation error:", error);
-          }
-        }
-        this.push(file);
-        callback();
-      }),
-    )
-    .pipe(postcss([tailwindcss("./tailwind.config.js"), autoprefixer]))
+    .src(path.src.mainStyle)
+    .pipe(postcss([tailwindcss]))
     .pipe(comments(headerComments))
     .pipe(gulp.dest(path.build.dir + "styles/"))
-    .pipe(
-      bs.reload({
-        stream: true,
-      }),
-    );
+    .pipe(bs.reload({ stream: true }));
 }
 
 // pages
