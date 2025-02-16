@@ -67,6 +67,7 @@ import themeConfig from "../../theme.json";
           colorUtils[`.bg-${prefix}${cls}`] = { backgroundColor: varRef };
           colorUtils[`.text-${prefix}${cls}`] = { color: varRef };
           colorUtils[`.border-${prefix}${cls}`] = { borderColor: varRef };
+          colorUtils[`.fill-${prefix}${cls}`] = { fill: varRef };
           colorUtils[`.from-${prefix}${cls}`] = {
             "--tw-gradient-from": varRef,
           };

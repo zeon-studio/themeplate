@@ -1,12 +1,14 @@
 (function () {
   "use strict";
 
-  // ########################## Preloader ##############################
+  //  Preloader
+  // ----------------------------------------
   // window.addEventListener("load", (e) => {
   //   document.querySelector(".preloader").style.display = "none";
   // });
 
-  // ########################## Theme switcher ##########################
+  // Theme switcher
+  // ----------------------------------------
   var darkMode = false;
   var themeSwitch = document.querySelectorAll("[data-theme-switcher]");
   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -35,7 +37,8 @@
     });
   });
 
-  // ####################### Testimonial Slider #########################
+  // Testimonial Slider
+  // ----------------------------------------
   new Swiper(".testimonial-slider", {
     spaceBetween: 24,
     loop: true,
@@ -54,7 +57,8 @@
     },
   });
 
-  // ########################## Tab ##########################
+  // Tab
+  // ----------------------------------------
   function setActiveTab(tabGroup, tabName) {
     const tabsNav = tabGroup.querySelector("[data-tab-nav]");
     const tabsContent = tabGroup.querySelector("[data-tab-content]");
@@ -118,7 +122,8 @@
     tab.addEventListener("keydown", tabsHandler);
   });
 
-  // ########################## Accordion ##########################
+  // Accordion
+  // ----------------------------------------
   const accordion = document.querySelectorAll("[data-accordion]");
   accordion.forEach((header) => {
     header.addEventListener("click", () => {
@@ -127,7 +132,8 @@
     });
   });
 
-  // ########################## Modal ##############################
+  // Modal
+  // ----------------------------------------
   const openModalButtons = document.querySelectorAll("[data-modal-open]");
   const closeModalButtons = document.querySelectorAll("[data-modal-close]");
 
