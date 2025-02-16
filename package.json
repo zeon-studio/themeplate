@@ -1,6 +1,6 @@
 {
   "name": "themeplate",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Gulp and Tailwindcss boilerplate for creating HTML templates",
   "author": "Zeon Studio",
   "license": "MIT",
@@ -21,6 +21,7 @@
     "gulp-file-include": "^2.3.0",
     "gulp-header-comment": "^0.10.0",
     "gulp-jshint": "^2.1.0",
+    "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^10.0.0",
     "gulp-rimraf": "^1.0.0",
     "gulp-template": "^6.0.0",

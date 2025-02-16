@@ -7,9 +7,9 @@ import gulp from "gulp";
 import fileInclude from "gulp-file-include";
 import comments from "gulp-header-comment";
 import jshint from "gulp-jshint";
+import plumber from "gulp-plumber";
 import postcss from "gulp-postcss";
 import template from "gulp-template";
-import gUtil from "gulp-util";
 import wrapper from "gulp-wrapper";
 import rimraf from "rimraf";
 
@@ -43,6 +43,14 @@ const path = {
 function styles() {
   return gulp
     .src(path.src.mainStyle)
+    .pipe(
+      plumber({
+        errorHandler: function (err) {
+          console.error(err.message);
+          this.emit("end");
+        },
+      }),
+    )
     .pipe(postcss([tailwindcss]))
     .pipe(comments(headerComments))
     .pipe(gulp.dest(path.build.dir + "styles/"))
@@ -87,16 +95,19 @@ function pages() {
 function scripts() {
   return gulp
     .src(path.src.scripts)
+    .pipe(
+      plumber({
+        errorHandler: function (err) {
+          console.error(err.message);
+          this.emit("end");
+        },
+      }),
+    )
     .pipe(jshint("./.jshintrc"))
     .pipe(jshint.reporter("jshint-stylish"))
-    .on("error", gUtil.log)
     .pipe(comments(headerComments))
     .pipe(gulp.dest(path.build.dir + "scripts/"))
-    .pipe(
-      bs.reload({
-        stream: true,
-      }),
-    );
+    .pipe(bs.reload({ stream: true }));
 }
 
 // Plugins
