@@ -13,7 +13,7 @@ import themeConfig from "../../theme.json";
     .filter(([key]) => !key.includes("type"))
     .reduce((acc, [key, font]) => {
       acc[key] =
-        `${findFont(font)}, ${themeConfig.fonts.font_family[`${key}-type`] || "sans-serif"}`;
+        `${findFont(font)}, ${themeConfig.fonts.font_family[`${key}_type`] || "sans-serif"}`;
       return acc;
     }, {});
 
