@@ -41,13 +41,9 @@ function removeDarkModeFromPages(directoryPath) {
 
 function removeDarkMode(configFile) {
   const { filePath, patterns } = configFile;
-  if (filePath === "tailwind.config.js") {
-    removeDarkModeFromFiles(filePath, patterns);
-  } else {
-    const contentFile = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    patterns.forEach((pattern) => deleteNestedProperty(contentFile, pattern));
-    fs.writeFileSync(filePath, JSON.stringify(contentFile));
-  }
+  const contentFile = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  patterns.forEach((pattern) => deleteNestedProperty(contentFile, pattern));
+  fs.writeFileSync(filePath, JSON.stringify(contentFile));
 }
 
 function deleteNestedProperty(obj, propertyPath) {
@@ -58,7 +54,7 @@ function deleteNestedProperty(obj, propertyPath) {
     if (currentObj.hasOwnProperty(property)) {
       currentObj = currentObj[property];
     } else {
-      return; // Property not found, no need to continue
+      return;
     }
   }
   delete currentObj[properties[properties.length - 1]];
