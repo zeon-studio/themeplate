@@ -4,8 +4,18 @@ import themeConfig from "../../theme.json";
 (function () {
   "use strict";
 
+  // Find font name from font string
   const findFont = (fontStr) =>
     fontStr.replace(/\+/g, " ").replace(/:[^:]+/g, "");
+
+  // Set font families dynamically, filtering out 'type' keys
+  const fontFamilies = Object.entries(themeConfig.fonts.font_family)
+    .filter(([key]) => !key.includes("type"))
+    .reduce((acc, [key, font]) => {
+      acc[key] =
+        `${findFont(font)}, ${themeConfig.fonts.font_family[`${key}-type`] || "sans-serif"}`;
+      return acc;
+    }, {});
 
   module.exports = plugin.withOptions(() => {
     return ({ addBase, addUtilities }) => {
@@ -32,11 +42,9 @@ import themeConfig from "../../theme.json";
         rootVars[`--text-${k}`] = v;
       });
 
-      // Set font families
-      rootVars["--font-primary"] =
-        `${findFont(themeConfig.fonts.font_family.primary)}, ${themeConfig.fonts.font_family.primary_type}`;
-      rootVars["--font-secondary"] =
-        `${findFont(themeConfig.fonts.font_family.secondary)}, ${themeConfig.fonts.font_family.secondary_type}`;
+      Object.entries(fontFamilies).forEach(([key, font]) => {
+        rootVars[`--font-${key}`] = font;
+      });
 
       // Define color groups
       const groups = [
@@ -56,6 +64,7 @@ import themeConfig from "../../theme.json";
         });
       });
 
+      // Add variables to root
       addBase({ ":root": rootVars });
 
       // Generate color utilities
@@ -78,11 +87,11 @@ import themeConfig from "../../theme.json";
         });
       });
 
-      // Generate font utilities
-      const fontUtils = {
-        ".font-primary": { fontFamily: "var(--font-primary)" },
-        ".font-secondary": { fontFamily: "var(--font-secondary)" },
-      };
+      // Generate font utilities dynamically
+      const fontUtils = {};
+      Object.keys(fontFamilies).forEach((key) => {
+        fontUtils[`.font-${key}`] = { fontFamily: `var(--font-${key})` };
+      });
       Object.keys(fontSizes).forEach((k) => {
         fontUtils[`.text-${k}`] = { fontSize: `var(--text-${k})` };
       });
