@@ -25,7 +25,6 @@
     "gulp-postcss": "^10.0.0",
     "gulp-rimraf": "^1.0.0",
     "gulp-template": "^6.0.0",
-    "gulp-util": "^3.0.8",
     "gulp-wrapper": "^1.0.0",
     "jshint": "^2.13.6",
     "jshint-stylish": "^2.2.1",

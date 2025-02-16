@@ -62,6 +62,14 @@ function pages() {
   return gulp
     .src(path.src.pages)
     .pipe(
+      plumber({
+        errorHandler: function (err) {
+          console.error(err.message);
+          this.emit("end");
+        },
+      }),
+    )
+    .pipe(
       wrapper({
         header:
           "<!DOCTYPE html>\n<html lang=\"zxx\">\n@@include('head.html')\n@@include('header.html')\n<body>",
