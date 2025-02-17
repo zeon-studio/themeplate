@@ -7,6 +7,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @import "./safe.css";
+@import "./utilities.css";
 
 @layer base {
   @import "./base.css";
@@ -16,8 +17,4 @@
   @import "./components.css";
   @import "./navigation.css";
   @import "./buttons.css";
-}
-
-@layer utilities {
-  @import "./utilities.css";
 }
