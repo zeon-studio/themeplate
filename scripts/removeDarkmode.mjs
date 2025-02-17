@@ -3,10 +3,6 @@ import path from "path";
 
 const rootDirs = ["src/pages", "src/partials", "src/styles"];
 const configFiles = [
-  {
-    filePath: "tailwind.config.js",
-    patterns: ["darkmode:\\s*{[^}]*},", 'darkMode:\\s*"class",'],
-  },
   { filePath: "src/theme.json", patterns: ["colors.darkmode"] },
 ];
 

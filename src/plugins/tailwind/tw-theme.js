@@ -50,11 +50,22 @@ import themeConfig from "../../theme.json";
       const groups = [
         { colors: themeConfig.colors.default.theme_color, prefix: "" },
         { colors: themeConfig.colors.default.text_color, prefix: "" },
-        {
-          colors: themeConfig.colors.darkmode.theme_color,
-          prefix: "darkmode-",
-        },
-        { colors: themeConfig.colors.darkmode.text_color, prefix: "darkmode-" },
+        ...(themeConfig.colors.darkmode?.theme_color
+          ? [
+              {
+                colors: themeConfig.colors.darkmode.theme_color,
+                prefix: "darkmode-",
+              },
+            ]
+          : []),
+        ...(themeConfig.colors.darkmode?.text_color
+          ? [
+              {
+                colors: themeConfig.colors.darkmode.text_color,
+                prefix: "darkmode-",
+              },
+            ]
+          : []),
       ];
 
       // Set color variables
