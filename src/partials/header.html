@@ -8,23 +8,20 @@
           class="dark:hidden"
           width="180"
           height="21"
-          alt="themeplate"
-        />
+          alt="themeplate" />
         <img
           src="images/logo-darkmode.png"
           class="hidden dark:inline-block"
           width="180"
           height="21"
-          alt="themeplate"
-        />
+          alt="themeplate" />
       </a>
     </div>
     <!-- navbar toggler -->
     <input id="nav-toggle" type="checkbox" class="hidden" />
     <label
       for="nav-toggle"
-      class="order-3 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white lg:order-1"
-    >
+      class="order-3 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white lg:order-1">
       <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
         <title>Menu Open</title>
         <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
@@ -33,15 +30,13 @@
         <title>Menu Close</title>
         <polygon
           points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
-          transform="rotate(45 10 10)"
-        ></polygon>
+          transform="rotate(45 10 10)"></polygon>
       </svg>
     </label>
     <!-- /navbar toggler -->
     <ul
       id="nav-menu"
-      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8"
-    >
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8">
       <li class="nav-item">
         <a href="index.html" class="nav-link">Home</a>
       </li>
@@ -52,17 +47,16 @@
         <a href="elements.html" class="nav-link">Elements</a>
       </li>
       <li class="nav-item nav-dropdown group relative">
-        <span class="nav-link inline-flex items-center">
+        <input type="checkbox" id="submenu-1" class="peer hidden lg:hidden" />
+        <label for="submenu-1" class="nav-link inline-flex items-center">
           Pages
           <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
             <path
-              d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-            />
+              d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
           </svg>
-        </span>
+        </label>
         <ul
-          class="nav-dropdown-list lg:group-hover:visible lg:group-hover:opacity-100"
-        >
+          class="nav-dropdown-list hidden peer-checked:block lg:invisible lg:absolute lg:block lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100">
           <li class="nav-dropdown-item">
             <a href="contact.html" class="nav-dropdown-link">Contact</a>
           </li>
@@ -102,8 +96,7 @@
     <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
       <button
         class="cursor-pointer border-border text-text-dark dark:border-darkmode-border mr-5 inline-block border-r pr-5 text-xl dark:text-white"
-        aria-label="search"
-      >
+        aria-label="search">
         <i class="fa-solid fa-search"></i>
       </button>
       <div class="theme-switcher mr-5">
@@ -117,11 +110,9 @@
               viewBox="0 0 56 56"
               fill="#fff"
               height="16"
-              width="16"
-            >
+              width="16">
               <path
-                d="M30 4.6c0-1-.9-2-2-2a2 2 0 0 0-2 2v5c0 1 .9 2 2 2s2-1 2-2Zm9.6 9a2 2 0 0 0 0 2.8c.8.8 2 .8 2.9 0L46 13a2 2 0 0 0 0-2.9 2 2 0 0 0-3 0Zm-26 2.8c.7.8 2 .8 2.8 0 .8-.7.8-2 0-2.9L13 10c-.7-.7-2-.8-2.9 0-.7.8-.7 2.1 0 3ZM28 16a12 12 0 0 0-12 12 12 12 0 0 0 12 12 12 12 0 0 0 12-12 12 12 0 0 0-12-12Zm23.3 14c1.1 0 2-.9 2-2s-.9-2-2-2h-4.9a2 2 0 0 0-2 2c0 1.1 1 2 2 2ZM4.7 26a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4.9c1 0 2-.9 2-2s-1-2-2-2Zm37.8 13.6a2 2 0 0 0-3 0 2 2 0 0 0 0 2.9l3.6 3.5a2 2 0 0 0 2.9 0c.8-.8.8-2.1 0-3ZM10 43.1a2 2 0 0 0 0 2.9c.8.7 2.1.8 3 0l3.4-3.5c.8-.8.8-2.1 0-2.9-.8-.8-2-.8-2.9 0Zm20 3.4c0-1.1-.9-2-2-2a2 2 0 0 0-2 2v4.9c0 1 .9 2 2 2s2-1 2-2Z"
-              />
+                d="M30 4.6c0-1-.9-2-2-2a2 2 0 0 0-2 2v5c0 1 .9 2 2 2s2-1 2-2Zm9.6 9a2 2 0 0 0 0 2.8c.8.8 2 .8 2.9 0L46 13a2 2 0 0 0 0-2.9 2 2 0 0 0-3 0Zm-26 2.8c.7.8 2 .8 2.8 0 .8-.7.8-2 0-2.9L13 10c-.7-.7-2-.8-2.9 0-.7.8-.7 2.1 0 3ZM28 16a12 12 0 0 0-12 12 12 12 0 0 0 12 12 12 12 0 0 0 12-12 12 12 0 0 0-12-12Zm23.3 14c1.1 0 2-.9 2-2s-.9-2-2-2h-4.9a2 2 0 0 0-2 2c0 1.1 1 2 2 2ZM4.7 26a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4.9c1 0 2-.9 2-2s-1-2-2-2Zm37.8 13.6a2 2 0 0 0-3 0 2 2 0 0 0 0 2.9l3.6 3.5a2 2 0 0 0 2.9 0c.8-.8.8-2.1 0-3ZM10 43.1a2 2 0 0 0 0 2.9c.8.7 2.1.8 3 0l3.4-3.5c.8-.8.8-2.1 0-2.9-.8-.8-2-.8-2.9 0Zm20 3.4c0-1.1-.9-2-2-2a2 2 0 0 0-2 2v4.9c0 1 .9 2 2 2s2-1 2-2Z" />
             </svg>
             <!-- moon -->
             <svg
@@ -129,22 +120,19 @@
               viewBox="0 0 24 24"
               fill="none"
               height="16"
-              width="16"
-            >
+              width="16">
               <path
                 fill="#000"
                 fill-rule="evenodd"
                 clip-rule="evenodd"
-                d="M8.2 2.2c1-.4 2 .6 1.6 1.5-1 3-.4 6.4 1.8 8.7a8.4 8.4 0 0 0 8.7 1.8c1-.3 2 .5 1.5 1.5v.1a10.3 10.3 0 0 1-9.4 6.2A10.3 10.3 0 0 1 3.2 6.7c1-2 2.9-3.5 4.9-4.4Z"
-              />
+                d="M8.2 2.2c1-.4 2 .6 1.6 1.5-1 3-.4 6.4 1.8 8.7a8.4 8.4 0 0 0 8.7 1.8c1-.3 2 .5 1.5 1.5v.1a10.3 10.3 0 0 1-9.4 6.2A10.3 10.3 0 0 1 3.2 6.7c1-2 2.9-3.5 4.9-4.4Z" />
             </svg>
           </span>
         </label>
       </div>
       <a
         class="btn btn-outline-primary btn-sm hidden lg:inline-block"
-        href="contact.html"
-      >
+        href="contact.html">
         Get In Touch
       </a>
     </div>
